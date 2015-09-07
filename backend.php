@@ -1,11 +1,12 @@
 <?php
-	$mysql_host = "10.10.26.58";
-	$mysql_user = "uMn2eXUumHv9jKio";
-	$mysql_passwd = "p7tSwlINkrFcfOsbg";
-	$mysql_db = "db_blog";
+	echo "backend.php..."
+	// $mysql_host = "10.10.26.58";
+	// $mysql_user = "uMn2eXUumHv9jKio";
+	// $mysql_passwd = "p7tSwlINkrFcfOsbg";
+	// $mysql_db = "db_blog";
 
-	$result = init_db();
-	echo $result;
+	// $result = init_db();
+	// echo $result;
 	
 	function the_title(){
 		$titulo = "docker php blog";
