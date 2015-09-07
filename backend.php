@@ -1,11 +1,22 @@
 <?php
-	
-	$result = init();
-	$system = "Subtitulo de la aplicacion";
+	$mysql_host = "10.10.26.58"
+	$mysql_user = "uMn2eXUumHv9jKio"
+	$mysql_passwd = "p7tSwlINkrFcfOsbg"
+	$mysql_db = "db_blog"
+
+	$result = init_db();
+	echo $result
 	
 	function the_title(){
-		$titulo = "Titulo de la aplicacion";
-		echo "Titulo de la aplicacion";
+		$titulo = "docker php blog";
+		echo "docker title";
+	}
+
+	function init_db(){
+		mysql_connect($mysql_host, $mysql_user, $mysql_passwd);
+		
+		$result = mysql_query("CREATE database " .$mysql_db);
+		return $result;
 	}
 	
 	function init(){
