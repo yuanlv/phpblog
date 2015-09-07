@@ -1,4 +1,4 @@
-image: daocloud.io/php:5-apache
+image: daocloud.io/ci-php:5.5
 
 services:
     - mysql
