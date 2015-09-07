@@ -1,4 +1,4 @@
-image: daocloud/ci-golang:1.4
+image: daocloud.io/php:5-apache
 
 services:
     - mysql
