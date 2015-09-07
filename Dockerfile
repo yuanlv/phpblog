@@ -7,5 +7,6 @@ RUN  apt-get update && apt-get install -y git-core
 COPY index.html /var/www/html/
 COPY daocloud.yml /var/www/html/
 COPY init.php /var/www/html/
+COPY bankend.php /var/www/html/
 
 EXPOSE 80
