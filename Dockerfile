@@ -5,6 +5,6 @@ MAINTAINER Lv Yuan <yuanlv@126.com>
 COPY index.html /var/www/html/
 COPY daocloud.yml /var/www/html/
 COPY init.php /var/www/html/
-COPY bankend.php /var/www/html/
+COPY backend.php /var/www/html/
 
 EXPOSE 80
