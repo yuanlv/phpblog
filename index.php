@@ -4,13 +4,8 @@
 </head>
 <body>
 <h1><?php the_title(); ?></h1>
-<h2><?php echo $system?></h2>
-<?php
-while ($row = mysql_fetch_assoc($result)) {
-    echo "<h1>".$row['title']."</h1>";
-    echo "<p>".$row['text']."</p>";
-}
-?>
+
+
 <h3>Meta</h3>
 <?php if (!isset($_COOKIE['username'])): ?>
 	<form action="login.php" method="post">

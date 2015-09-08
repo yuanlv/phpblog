@@ -1,5 +1,5 @@
 <?php
-	echo "backend.php..."
+	echo "backend.php...";
 	// $mysql_host = "10.10.26.58";
 	// $mysql_user = "uMn2eXUumHv9jKio";
 	// $mysql_passwd = "p7tSwlINkrFcfOsbg";
