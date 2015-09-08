@@ -8,6 +8,8 @@
 
 <?php
     echo "init mysql database test";
+    $result = init_db();
+	echo $result;
 ?>
 
 </dody>
