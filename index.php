@@ -6,6 +6,8 @@
 <h1><?php the_title(); ?></h1>
 
 
+
+
 <h3>Meta</h3>
 <?php if (!isset($_COOKIE['username'])): ?>
 	<form action="login.php" method="post">
