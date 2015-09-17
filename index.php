@@ -32,12 +32,16 @@ function getTop1($content){
 	}
 
 	$result2 = strpos($content, $find2);
+	if(!$result2){
+		return $err;
+	}
+	
 	return substr($content, $result1, $result2-1);
 }
 
 
-// echo "get news...<br/>";
-// echo getNews("docker");
+echo "get news...<br/>";
+echo getNews($_GET['keyword']);
 
 /**
   * wechat php test
