@@ -24,8 +24,8 @@ function getNews($keyword){
  *<div class="result" id="1"> ... </div>
  */
 function getTop1($content){
-	$find = "<div class="result" id="1">";
-	$find2 = "<div class="result" id="2">";
+	$find = '<div class="result" id="1">';
+	$find2 = '<div class="result" id="2">';
 	$result1 = strpos($content, $find);
 	if(!$result){
 		return $err;
@@ -35,7 +35,7 @@ function getTop1($content){
 	if(!$result2){
 		return $err;
 	}
-	
+
 	return substr($content, $result1, $result2-1);
 }
 
