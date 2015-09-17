@@ -1,5 +1,5 @@
 <?php
-
+ include_once("news.php");
 /**
   * wechat php test
   */
@@ -9,6 +9,7 @@ define("TOKEN", "test");
 $wechatObj = new wechatCallbackapiTest();
 $wechatObj->responseMsg();
 //$wechatObj->valid();
+
 
 class wechatCallbackapiTest
 {
@@ -69,11 +70,11 @@ class wechatCallbackapiTest
         if(!empty( $keyword ))
         {
             $msgType = "text";
-            $contentStr = "Welcome to wechat world!";
+            $contentStr = getNews($keyword);
             $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
             echo $resultStr;
         }else{
-            echo "Input something...";
+            echo "随便搜点什么吧";
         }
     }
 
