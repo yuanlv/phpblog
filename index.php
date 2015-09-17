@@ -2,6 +2,9 @@
 /**
  * 从百度新闻中查询关键字，显示搜索结果
  */
+	
+$err = "没有搜到内容，换个词试试吧";
+
 function getNews($keyword){
 	$url = "http://news.baidu.com/ns?word=".$keyword."&tn=news&from=news&cl=2&rn=20&ct=1&oq=yuer&f=3&rsp=1";
 	print_r($url);
@@ -9,8 +12,29 @@ function getNews($keyword){
 	$news = curl_exec($curl);
 	curl_close($curl);
 
-	return $news[0];
+	if(strlen($news[0]==0)){
+		return $err;
+	}
+	return getTop1($news[0]);
+	//return $news[0];
 }
+
+/*
+ * 抽取第一个搜索结果
+ *<div class="result" id="1"> ... </div>
+ */
+function getTop1($content){
+	$find = "<div class="result" id="1">";
+	$find2 = "<div class="result" id="2">";
+	$result1 = strpos($content, $find);
+	if(!$result){
+		return $err;
+	}
+
+	$result2 = strpos($content, $find2);
+	return substr($content, $result1, $result2-1);
+}
+
 
 // echo "get news...<br/>";
 // echo getNews("docker");
