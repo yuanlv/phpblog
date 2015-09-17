@@ -12,8 +12,8 @@ function getNews($keyword){
 	return $news[0];
 }
 
-echo "get news...<br/>";
-echo getNews("docker");
+// echo "get news...<br/>";
+// echo getNews("docker");
 
 /**
   * wechat php test
@@ -86,7 +86,6 @@ class wechatCallbackapiTest
         {
             $msgType = "text";
             $contentStr = getNews($keyword);
-            print_r($contentStr);
             $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
             echo $resultStr;
         }else{
