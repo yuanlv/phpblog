@@ -27,6 +27,7 @@ function getTop1($content){
     $div = $html->find('div[id=1]', 0);
 
     $ret =  $div->plaintext;
+    $ret = str_replace("&nbsp;", " ", $ret);
     // $title = $div->children(0)->children(0)->innertext;
     // $title = str_replace("<em>", "", $title);
     // $title = str_replace("</em>", "", $title);
