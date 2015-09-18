@@ -25,19 +25,29 @@ function getTop1($content){
     $html->load($content);
 
     $div = $html->find('div[id=1]', 0);
-    $title = $div->children(0)->children(0)->innertext;
-    $title1 = str_replace("<em>", "", $title);
-    
-    $title2 = str_replace("</em>", "", $title1);
+
+    $ret =  $div->plaintext;
+    // $title = $div->children(0)->children(0)->innertext;
+    // $title = str_replace("<em>", "", $title);
+    // $title = str_replace("</em>", "", $title);
+    // echo $title;
+
+    // $from = $div->children(1)->children(1)->children(0);
+    // $from = str_replace("&nbsp;", "", $from);
+    // echo $from;
+
+    // $summer = $div->children(1)->children(1)->children(1);
+    // echo $summer;
+
     $html->clear();
 
-    return $title2;
+    return $ret;
 }
 
 
 // echo "get news...<br/>";
 // echo getNews($_GET['keyword']);
-//getNews("docker");
+//echo getNews("docker");
 
 /**
   * wechat php test
