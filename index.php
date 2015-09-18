@@ -107,7 +107,7 @@ class wechatCallbackapiTest
         {
             $msgType = "text";
             //$contentStr = getNews($keyword);
-            $contentStr = "云计算docker容器商业模式";
+            $contentStr = "<a href=""> 云计算<em>docker</em>容器商业模式 </a>;
             $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
             echo $resultStr;
         }else{
