@@ -27,10 +27,8 @@ function getTop1($content){
     $div = $html->find('div[id=1]', 0);
     $title = $div->children(0)->children(0)->innertext;
     $title1 = str_replace("<em>", "", $title);
-    echo $title1."\n";
-    $title2 = str_replace("</em>", "", $title1);
     
-    echo $title2."\n";
+    $title2 = str_replace("</em>", "", $title1);
     $html->clear();
 
     return $title2;
@@ -38,8 +36,8 @@ function getTop1($content){
 
 
 // echo "get news...<br/>";
-// //echo getNews($_GET['keyword']);
-// getNews("docker");
+// echo getNews($_GET['keyword']);
+//getNews("docker");
 
 /**
   * wechat php test
@@ -48,7 +46,7 @@ function getTop1($content){
 //define your token
 define("TOKEN", "test");
 $wechatObj = new wechatCallbackapiTest();
-//$wechatObj->responseMsg();
+$wechatObj->responseMsg();
 //$wechatObj->valid();
 
 
