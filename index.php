@@ -25,15 +25,20 @@ function getTop1($content){
     $html->load($content);
 
     $div = $html->find('div[id=1]', 0);
-    echo $div->children(0)->children(0)->innertext;
-
+    $title = $div->children(0)->children(0)->innertext;
+    $title1 = str_replace("<em>", "", $title);
+    echo $title1."\n";
+    $title2 = str_replace("</em>", "", $title1);
+    
+    echo $title2."\n";
     $html->clear();
-	//return substr($content, $result1, $result2-1);
+
+    return $title2;
 }
 
 
 // echo "get news...<br/>";
-// echo getNews($_GET['keyword']);
+// //echo getNews($_GET['keyword']);
 // getNews("docker");
 
 /**
@@ -43,7 +48,7 @@ function getTop1($content){
 //define your token
 define("TOKEN", "test");
 $wechatObj = new wechatCallbackapiTest();
-$wechatObj->responseMsg();
+//$wechatObj->responseMsg();
 //$wechatObj->valid();
 
 
@@ -106,8 +111,8 @@ class wechatCallbackapiTest
         if(!empty( $keyword ))
         {
             $msgType = "text";
-            //$contentStr = getNews($keyword);
-            $contentStr = "<a href=""> 云计算<em>docker</em>容器商业模式 </a>;
+            $contentStr = getNews($keyword);
+
             $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
             echo $resultStr;
         }else{
