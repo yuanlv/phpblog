@@ -25,18 +25,16 @@ function getTop1($content){
     $html->load($content);
 
     $div = $html->find('div[id=1]', 0);
-    echo "\n======================\n";
-    
-    echo $div;
+    echo $div->children(0)->children(0)->innertext;
 
     $html->clear();
 	//return substr($content, $result1, $result2-1);
 }
 
 
-//echo "get news...<br/>";
-//echo getNews($_GET['keyword']);
-//getNews("docker");
+// echo "get news...<br/>";
+// echo getNews($_GET['keyword']);
+// getNews("docker");
 
 /**
   * wechat php test
