@@ -55,53 +55,11 @@ function getSogouWXUrl($keyword){
     return $url;
 }
 
-function test($keyword){
-    $fromUsername = "from";
-        $toUsername = "to";
-        $keyword = trim($keyword);
-        $time = time();
-        $textTpl = "<xml>
-                        <ToUserName><![CDATA[%s]]></ToUserName>
-                        <FromUserName><![CDATA[%s]]></FromUserName>
-                        <CreateTime>%s</CreateTime>
-                        <MsgType><![CDATA[%s]]></MsgType>
-                        <ArticleCount>2</ArticleCount>
-                        <Articles>
-                            <item>
-                            <Title><![CDATA[%s]]></Title> 
-                            <Description><![CDATA[%s]]></Description>
-                            <PicUrl><![CDATA[%s]]></PicUrl>
-                            <Url><![CDATA[%s]]></Url>
-                            </item>
-                            <item>
-                            <Title><![CDATA[%s]]></Title> 
-                            <Description><![CDATA[%s]]></Description>
-                            <PicUrl><![CDATA[%s]]></PicUrl>
-                            <Url><![CDATA[%s]]></Url>
-                            </item>
-                        </Articles>
-                    </xml>";
-
-        if(!empty( $keyword ))
-        {
-            $msgType = "news";
-            $title = $keyword;
-            $desc = "点击图片查看搜索页结果";
-            $picUrl = "http://api18.yunpan.360.cn/intf.php?method=File.getThumbByNid&qid=23820336&nid=1442731";
-            $url = getBaiduNewsUrl($keyword);
-
-            $url2 = getSogouWXUrl($keyword);
-
-            $resultStr = sprintf($textTpl, $fromUsername, "yuernote", $time, $msgType, 
-                                $title, $desc, $picUrl, $url,
-                                $title, $desc, $picUrl, $url2);
-            echo $resultStr;
-        }else{
-            echo "随便搜点什么吧";
-        }
+function test(){
+    echo getSogouWXUrl("docker");
 }
 
-//echo test("docker");
+//echo test();
 // echo "get news...<br/>";
 // echo getNews($_GET['keyword']);
 //echo getNews("docker");
@@ -203,12 +161,6 @@ class wechatCallbackapiTest
                             <PicUrl><![CDATA[%s]]></PicUrl>
                             <Url><![CDATA[%s]]></Url>
                             </item>
-                            <item>
-                            <Title><![CDATA[%s]]></Title> 
-                            <Description><![CDATA[%s]]></Description>
-                            <PicUrl><![CDATA[%s]]></PicUrl>
-                            <Url><![CDATA[%s]]></Url>
-                            </item>
                         </Articles>
                     </xml>";
 
@@ -216,16 +168,11 @@ class wechatCallbackapiTest
         {
             $msgType = "news";
             $title = $keword;
-            $desc1 = "点击查看百度新闻搜索结果";
-            $picUrl1 = "";
-            $url1 = getBaiduNewsUrl($keyword);
-
-            $desc2 = "点击查看搜狗微信搜索结果";
-            $picUrl2 = "";
-            $url2 = "http://yuanlv-docker-phpblog.daoapp.io/weixin_sogou.php?keywword=".$keywword;
+            $desc1 = "点击查看搜索结果";
+            $picUrl1 = "http://www.getpic.com/nopic";
+            $url1 = "http://yuanlv-docker-phpblog.daoapp.io/weixin_sogou.php?keywword=".$keywword;      
             $resultStr = sprintf($textTpl, $fromUsername, "yuernote", $time, $msgType, 
-                                 $title, $desc1, $picUrl1, $url1,
-                                 $title, $desc2, $picUrl2, $url2);
+                                 $title, $desc1, $picUrl1, $url1);
             echo $resultStr;
         }else{
             echo "随便搜点什么吧";
