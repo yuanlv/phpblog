@@ -45,7 +45,48 @@ function getTop1($content){
     return $ret;
 }
 
+function getUrl($keyword){
+    $url = "http://news.baidu.com/ns?word=".$keyword."&tn=news&from=news&cl=2&rn=20&ct=1&oq=yuer&f=3&rsp=1";
+    return $url;    
+}
 
+function test($keyword){
+    $fromUsername = "from";
+        $toUsername = "to";
+        $keyword = trim($keyword);
+        $time = time();
+        $textTpl = "<xml>
+                        <ToUserName><![CDATA[%s]]></ToUserName>
+                        <FromUserName><![CDATA[%s]]></FromUserName>
+                        <CreateTime>%s</CreateTime>
+                        <MsgType><![CDATA[%s]]></MsgType>
+                        <ArticleCount>1</ArticleCount>
+                        <Articles>
+                            <item>
+                            <Title><![CDATA[%s]]></Title> 
+                            <Description><![CDATA[%s]]></Description>
+                            <PicUrl><![CDATA[%s]]></PicUrl>
+                            <Url><![CDATA[%s]]></Url>
+                            </item>
+                        </Articles>
+                    </xml>";
+
+        if(!empty( $keyword ))
+        {
+            $msgType = "news";
+            $title = $keyword;
+            $desc = "点击图片查看搜索页结果";
+            $picUrl = "http://api18.yunpan.360.cn/intf.php?method=File.getThumbByNid&qid=23820336&nid=1442731";
+            $url = getUrl($keyword);
+
+            $resultStr = sprintf($textTpl, $fromUsername, "yuernote", $time, $msgType, $title, $desc, $picUrl, $url);
+            echo $resultStr;
+        }else{
+            echo "随便搜点什么吧";
+        }
+}
+
+//echo test("docker");
 // echo "get news...<br/>";
 // echo getNews($_GET['keyword']);
 //echo getNews("docker");
@@ -88,7 +129,7 @@ class wechatCallbackapiTest
                 switch($RX_TYPE)
                 {
                     case "text":
-                        $resultStr = $this->handleText($postObj);
+                        $resultStr = $this->handleTextRetImage($postObj);
                         break;
                     case "event":
                         $resultStr = $this->handleEvent($postObj);
@@ -123,6 +164,42 @@ class wechatCallbackapiTest
             $contentStr = getNews($keyword);
 
             $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+            echo $resultStr;
+        }else{
+            echo "随便搜点什么吧";
+        }
+    }
+
+    public function handleTextRetImage($postObj){
+        $fromUsername = $postObj->FromUserName;
+        $toUsername = $postObj->ToUserName;
+        $keyword = trim($postObj->Content);
+        $time = time();
+        $textTpl = "<xml>
+                        <ToUserName><![CDATA[%s]]></ToUserName>
+                        <FromUserName><![CDATA[%s]]></FromUserName>
+                        <CreateTime>%s</CreateTime>
+                        <MsgType><![CDATA[%s]]></MsgType>
+                        <ArticleCount>1</ArticleCount>
+                        <Articles>
+                            <item>
+                            <Title><![CDATA[%s]]></Title> 
+                            <Description><![CDATA[%s]]></Description>
+                            <PicUrl><![CDATA[%s]]></PicUrl>
+                            <Url><![CDATA[%s]]></Url>
+                            </item>
+                        </Articles>
+                    </xml>";
+
+        if(!empty( $keyword ))
+        {
+            $msgType = "news";
+            $title = $keword;
+            $desc = "点击图片查看搜索页结果";
+            $picUrl = "http://api18.yunpan.360.cn/intf.php?method=File.getThumbByNid&qid=23820336&nid=1442731";
+            $url = getUrl($keyword);
+
+            $resultStr = sprintf($textTpl, $fromUsername, "yuernote", $time, $msgType, $title, $desc, $picUrl, $url);
             echo $resultStr;
         }else{
             echo "随便搜点什么吧";
