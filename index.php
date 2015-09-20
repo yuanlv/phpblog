@@ -168,9 +168,10 @@ class wechatCallbackapiTest
         {
             $msgType = "news";
             $title = $keword;
-            $desc1 = "点击查看微信搜索结果";
+            $desc1 = "点击查看百度新闻搜索结果";
             $picUrl1 = "http://api18.yunpan.360.cn/intf.php?method=File.getThumbByNid&qid=23820336&nid=14427314186187642&size=800_600&devtype=web&v=1.0.1&rtick=14427314189263&sign=f332f39ad8cdc1e26bd802b5cfedfcea&";
-            $url1 = "http://yuanlv-docker-phpblog.daoapp.io/weixin_sogou.php?keywword=".$keywword;      
+            $url1 = getBaiduNewsUrl($keywword);
+            //"http://yuanlv-docker-phpblog.daoapp.io/weixin_sogou.php?keywword=".$keywword;      
             $resultStr = sprintf($textTpl, $fromUsername, "yuernote", $time, $msgType, 
                                  $title, $desc1, $picUrl1, $url1);
             echo $resultStr;
