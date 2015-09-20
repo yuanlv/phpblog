@@ -45,9 +45,14 @@ function getTop1($content){
     return $ret;
 }
 
-function getUrl($keyword){
+function getBaiduNewsUrl($keyword){
     $url = "http://news.baidu.com/ns?word=".$keyword."&tn=news&from=news&cl=2&rn=20&ct=1&oq=yuer&f=3&rsp=1";
     return $url;    
+}
+
+function getSogouWXUrl($keyword){
+    $url = "http://weixin.sogou.com/weixin?query=".$keyword."&fr=sgsearch&ie=utf8&type=2&w=01019900&sut=2642&sst0=1442733020976&lkt=4%2C1442733019274%2C1442733019531";
+    return $url;
 }
 
 function test($keyword){
@@ -60,8 +65,14 @@ function test($keyword){
                         <FromUserName><![CDATA[%s]]></FromUserName>
                         <CreateTime>%s</CreateTime>
                         <MsgType><![CDATA[%s]]></MsgType>
-                        <ArticleCount>1</ArticleCount>
+                        <ArticleCount>2</ArticleCount>
                         <Articles>
+                            <item>
+                            <Title><![CDATA[%s]]></Title> 
+                            <Description><![CDATA[%s]]></Description>
+                            <PicUrl><![CDATA[%s]]></PicUrl>
+                            <Url><![CDATA[%s]]></Url>
+                            </item>
                             <item>
                             <Title><![CDATA[%s]]></Title> 
                             <Description><![CDATA[%s]]></Description>
@@ -77,9 +88,13 @@ function test($keyword){
             $title = $keyword;
             $desc = "点击图片查看搜索页结果";
             $picUrl = "http://api18.yunpan.360.cn/intf.php?method=File.getThumbByNid&qid=23820336&nid=1442731";
-            $url = getUrl($keyword);
+            $url = getBaiduNewsUrl($keyword);
 
-            $resultStr = sprintf($textTpl, $fromUsername, "yuernote", $time, $msgType, $title, $desc, $picUrl, $url);
+            $url2 = getSogouWXUrl($keyword);
+
+            $resultStr = sprintf($textTpl, $fromUsername, "yuernote", $time, $msgType, 
+                                $title, $desc, $picUrl, $url,
+                                $title, $desc, $picUrl, $url2);
             echo $resultStr;
         }else{
             echo "随便搜点什么吧";
@@ -180,8 +195,14 @@ class wechatCallbackapiTest
                         <FromUserName><![CDATA[%s]]></FromUserName>
                         <CreateTime>%s</CreateTime>
                         <MsgType><![CDATA[%s]]></MsgType>
-                        <ArticleCount>1</ArticleCount>
+                        <ArticleCount>2</ArticleCount>
                         <Articles>
+                            <item>
+                            <Title><![CDATA[%s]]></Title> 
+                            <Description><![CDATA[%s]]></Description>
+                            <PicUrl><![CDATA[%s]]></PicUrl>
+                            <Url><![CDATA[%s]]></Url>
+                            </item>
                             <item>
                             <Title><![CDATA[%s]]></Title> 
                             <Description><![CDATA[%s]]></Description>
@@ -195,11 +216,16 @@ class wechatCallbackapiTest
         {
             $msgType = "news";
             $title = $keword;
-            $desc = "点击图片查看搜索页结果";
-            $picUrl = "http://api18.yunpan.360.cn/intf.php?method=File.getThumbByNid&qid=23820336&nid=1442731";
-            $url = getUrl($keyword);
+            $desc1 = "点击查看百度新闻搜索结果";
+            $picUrl1 = "http://news.baidu.com/resource/img/logo_news_276_88.png";
+            $url1 = getBaiduNewsUrl($keyword);
 
-            $resultStr = sprintf($textTpl, $fromUsername, "yuernote", $time, $msgType, $title, $desc, $picUrl, $url);
+            $desc2 = "点击查看搜狗微信搜索结果";
+            $picUrl2 = "http://weixin.sogou.com/images/wx-logo.gif";
+            $url2 = getSogouWXUrl($keyword);
+            $resultStr = sprintf($textTpl, $fromUsername, "yuernote", $time, $msgType, 
+                                 $title, $desc1, $picUrl1, $url1,
+                                 $title, $desc2, $picUrl2, $url2);
             echo $resultStr;
         }else{
             echo "随便搜点什么吧";
