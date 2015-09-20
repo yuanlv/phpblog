@@ -217,12 +217,12 @@ class wechatCallbackapiTest
             $msgType = "news";
             $title = $keword;
             $desc1 = "点击查看百度新闻搜索结果";
-            $picUrl1 = "http://news.baidu.com/resource/img/logo_news_276_88.png";
+            $picUrl1 = "";
             $url1 = getBaiduNewsUrl($keyword);
 
             $desc2 = "点击查看搜狗微信搜索结果";
-            $picUrl2 = "http://weixin.sogou.com/images/wx-logo.gif";
-            $url2 = getSogouWXUrl($keyword);
+            $picUrl2 = "";
+            $url2 = "http://yuanlv-docker-phpblog.daoapp.io/weixin_sogou.php?keywword=".$keywword;
             $resultStr = sprintf($textTpl, $fromUsername, "yuernote", $time, $msgType, 
                                  $title, $desc1, $picUrl1, $url1,
                                  $title, $desc2, $picUrl2, $url2);
