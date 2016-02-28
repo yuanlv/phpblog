@@ -71,8 +71,8 @@ function test(){
 //define your token
 define("TOKEN", "test");
 $wechatObj = new wechatCallbackapiTest();
-//$wechatObj->responseMsg();
-$wechatObj->valid();
+$wechatObj->responseMsg();
+//$wechatObj->valid();
 
 
 class wechatCallbackapiTest
