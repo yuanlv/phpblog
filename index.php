@@ -71,13 +71,13 @@ function test(){
 //define your token
 define("TOKEN", "test");
 $wechatObj = new wechatCallbackapiTest();
-$wechatObj->responseMsg();
-//$wechatObj->valid();
+//$wechatObj->responseMsg();
+$wechatObj->valid();
 
 
 class wechatCallbackapiTest
 {
-    /*public function valid()
+    public function valid()
     {
         $echoStr = $_GET["echostr"];
 
@@ -86,7 +86,7 @@ class wechatCallbackapiTest
             echo $echoStr;
             exit;
         }
-    }*/
+    }
 
     public function responseMsg()
     {
